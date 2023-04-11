@@ -28,10 +28,15 @@ function App(){
   }
 
   /* JSX list of todo's and form to add a new one */ 
-  return(<>
-    {todos.map( (todo, index) => <Todo todo={todo} index={index} remove={removeTodo}/> )}
-    <TodoForm addTodo={addTodo}/>
-  </>);
+  return(
+    <div className="app">
+      <h1><i className="ri-refresh-line"></i> Flow App</h1>
+      <div className="todo-list">
+        {todos.map( (todo, index) => <Todo todo={todo} index={index} remove={removeTodo}/> )}
+        <TodoForm addTodo={addTodo}/>
+      </div>
+    </div>
+  );
 }
 
 /* Render the app */ 

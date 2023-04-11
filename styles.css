@@ -10,15 +10,27 @@ code {
 }
 
 .app {
-  background: #209cee;
   padding: 30px;
   height: 100vh;
 }
 
+h1 {
+  margin-bottom: 7px;
+  background-image: #0f0c29;  /* fallback for old browsers */
+  background-image: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+  background-image: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 .todo-list{
-  background: #e8e8e8;
+  background: #0f0c29;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
   border-radius: 4px;
-  padding: 5px;
+  padding: 15px;
   max-width: 400px;
 }
 
@@ -31,7 +43,7 @@ code {
   border-radius: 3px;
   display:flex;
   align-items: center;
-  justify-content: start;
+  justify-content: space-between;
   line-height: 1.3em;
 }
 
@@ -46,11 +58,23 @@ code {
   font-size: 24px;
 }
 
-.todo hover {
+.input::placeholder {
+  opacity: 0.5;
+}
+
+.input:focus::placeholder {
+  opacity: 0;
+}
+
+.todo .hover {
   margin-left: 1em;
   opacity: 0;
 }
 
-.todo:hover hover {
+.todo:hover {
+  cursor: pointer;
+}
+
+.todo:hover .hover {
   opacity: 1;
 }

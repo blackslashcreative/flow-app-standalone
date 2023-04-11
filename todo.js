@@ -4,6 +4,6 @@ function Todo({todo,index,remove}){
     remove(index);
   }
 
-  return <div className="todo" onClick={handle}>{todo.text} <hover>(-)</hover></div>
+  return <div className="todo" onClick={handle}>{todo.text} <i class="hover ri-delete-back-2-line"></i></div>
 
 }
