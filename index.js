@@ -1,4 +1,5 @@
 function App(){
+  /* ToDos List Initialize State */ 
   const [todos, setTodos] = React.useState([
     {
       text: 'build todo functionality',
@@ -12,14 +13,35 @@ function App(){
       text: 'package as a lightweight desktop app',
       isCompleted: false,
     }
-  ])
+  ]);
+  /* ToDo Form Value */ 
+  const [value, setValue] = React.useState('');
+  /* Handle Form Submit */ 
+  const handleSubmit = e => {
+    e.preventDefault(); // prevent page reload 
+    if (!value) return; // check for input 
+    const newTodos = [...todos, {text:value, isCompleted:false}]; // update todos state, adding new one
+    setTodos(newTodos);
+    setValue(''); // clear the form input 
+  }
 
+  /* JSX list of todo's and form to add a new one */ 
   return(<>
     {todos.map((todo, index) => 
       <div className="todo" key={index}>{todo.text}</div>)}
+    <form onSubmit={handleSubmit}>
+      <input 
+        type="text"
+        className="input"
+        value={value}
+        placeholder="add item ..."
+        onChange={e => setValue(e.target.value)}
+        />
+    </form>
   </>);
 }
 
+/* Render the app */ 
 ReactDOM.render(
   <App/>,
   document.getElementById('root')
