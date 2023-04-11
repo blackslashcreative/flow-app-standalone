@@ -13,9 +13,10 @@ function App(){
       isCompleted: false,
     }
   ])
-  
+
   return(<>
-    {todos.map((todo, index) => <div key={index}>{todo.text}</div>)}
+    {todos.map((todo, index) => 
+      <div className="todo" key={index}>{todo.text}</div>)}
   </>);
 }
 
