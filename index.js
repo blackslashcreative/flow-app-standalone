@@ -14,17 +14,12 @@ function App(){
       isCompleted: false,
     }
   ]);
-  /* ToDo Form Value */ 
-  const [value, setValue] = React.useState('');
-  /* Handle Form Submit */ 
-  const handleSubmit = e => {
-    e.preventDefault(); // prevent page reload 
-    if (!value) return; // check for input 
-    const newTodos = [...todos, {text:value, isCompleted:false}]; // update todos state, adding new one
+  
+  const addTodo = text => {
+    const newTodos = [...todos, {text:text, isCompleted:false}]; // update todos state, adding new one
     setTodos(newTodos);
-    setValue(''); // clear the form input 
   }
-  /* Remove Todo item */ 
+  
   const removeTodo = e  => {
     const index = Number(e.target.id);
     let temp = [...todos];
@@ -36,15 +31,7 @@ function App(){
   return(<>
     {todos.map((todo, index) => 
       <div className="todo" key={index} id={index} onClick={removeTodo}>{todo.text}</div>)}
-    <form onSubmit={handleSubmit}>
-      <input 
-        type="text"
-        className="input"
-        value={value}
-        placeholder="add item ..."
-        onChange={e => setValue(e.target.value)}
-        />
-    </form>
+    <TodoForm addTodo={addTodo}/>
   </>);
 }
 
