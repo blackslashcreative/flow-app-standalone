@@ -1,4 +1,5 @@
 function App(){
+
   /* ToDos List Initialize State */ 
   const [todos, setTodos] = React.useState([
     {
@@ -14,14 +15,13 @@ function App(){
       isCompleted: false,
     }
   ]);
-  
+
   const addTodo = text => {
     const newTodos = [...todos, {text:text, isCompleted:false}]; // update todos state, adding new one
     setTodos(newTodos);
   }
   
-  const removeTodo = e  => {
-    const index = Number(e.target.id);
+  const removeTodo = index  => {
     let temp = [...todos];
     temp.splice(index,1);
     setTodos(temp);
@@ -29,8 +29,7 @@ function App(){
 
   /* JSX list of todo's and form to add a new one */ 
   return(<>
-    {todos.map((todo, index) => 
-      <div className="todo" key={index} id={index} onClick={removeTodo}>{todo.text}</div>)}
+    {todos.map( (todo, index) => <Todo todo={todo} index={index} remove={removeTodo}/> )}
     <TodoForm addTodo={addTodo}/>
   </>);
 }
