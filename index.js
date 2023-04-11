@@ -24,11 +24,18 @@ function App(){
     setTodos(newTodos);
     setValue(''); // clear the form input 
   }
+  /* Remove Todo item */ 
+  const removeTodo = e  => {
+    const index = Number(e.target.id);
+    let temp = [...todos];
+    temp.splice(index,1);
+    setTodos(temp);
+  }
 
   /* JSX list of todo's and form to add a new one */ 
   return(<>
     {todos.map((todo, index) => 
-      <div className="todo" key={index}>{todo.text}</div>)}
+      <div className="todo" key={index} id={index} onClick={removeTodo}>{todo.text}</div>)}
     <form onSubmit={handleSubmit}>
       <input 
         type="text"
